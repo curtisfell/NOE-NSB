@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace Zsus.Noe.Messages
 {
-    public class NoeOfferResponse : INoeMessage
+    public class NoeResponse : INoeMessage
     {
         public Guid SagaId { get; set; }
         public int NoeId { get; set; }
-        public Boolean NoeOfferAccepted { get; set; }
+        public int Status { get; set; }
         public DateTime Timestamp { get; set; }
-        public NoeOfferResponse() { }
-        public NoeOfferResponse(INoeMessage i)
+        public NoeResponse() { }
+        public NoeResponse(INoeMessage i)
         {
             SagaId = i.SagaId;
             NoeId = i.NoeId;
-            NoeOfferAccepted = false;
+            Status = -1;
             Timestamp = i.Timestamp;
         }
     }

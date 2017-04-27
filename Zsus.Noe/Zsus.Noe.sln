@@ -15,8 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zsus.Noe.Messages", "Zsus.N
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zsus.Noe.Utilities", "Zsus.Noe.Utilities\Zsus.Noe.Utilities.csproj", "{BF12550F-536A-4E35-8ACC-5121F7731AE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zsus.Noe.Offer.Response", "Zsus.Noe.Offer.Response\Zsus.Noe.Offer.Response.csproj", "{AB537247-C25F-44EC-B3FA-48D9811AF935}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zsus.Noe.Approve", "Zsus.Noe.Approve\Zsus.Noe.Approve.csproj", "{901860BB-A71E-4269-992D-40FE1897334A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zsus.Noe.Approve.Request", "Zsus.Noe.Approve.Request\Zsus.Noe.Approve.Request.csproj", "{09156063-D938-4874-BCCF-1771B4535864}"
@@ -24,6 +22,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zsus.Noe.Repository", "Zsus.Noe.Repository\Zsus.Noe.Repository.csproj", "{7FE504EF-2DFD-4828-9CAC-C141A2B604AC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zsus.Noe.Test", "Zsus.Noe.Test\Zsus.Noe.Test.csproj", "{1152C20E-DF30-43CC-B99F-DE7FF4356C56}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zsus.Noe.Response", "Zsus.Noe.Response\Zsus.Noe.Response.csproj", "{292EF832-CCD7-4B28-984A-3EC32DE8B4F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,10 +55,6 @@ Global
 		{BF12550F-536A-4E35-8ACC-5121F7731AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF12550F-536A-4E35-8ACC-5121F7731AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF12550F-536A-4E35-8ACC-5121F7731AE7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AB537247-C25F-44EC-B3FA-48D9811AF935}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AB537247-C25F-44EC-B3FA-48D9811AF935}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AB537247-C25F-44EC-B3FA-48D9811AF935}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AB537247-C25F-44EC-B3FA-48D9811AF935}.Release|Any CPU.Build.0 = Release|Any CPU
 		{901860BB-A71E-4269-992D-40FE1897334A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{901860BB-A71E-4269-992D-40FE1897334A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{901860BB-A71E-4269-992D-40FE1897334A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -75,6 +71,10 @@ Global
 		{1152C20E-DF30-43CC-B99F-DE7FF4356C56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1152C20E-DF30-43CC-B99F-DE7FF4356C56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1152C20E-DF30-43CC-B99F-DE7FF4356C56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{292EF832-CCD7-4B28-984A-3EC32DE8B4F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{292EF832-CCD7-4B28-984A-3EC32DE8B4F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{292EF832-CCD7-4B28-984A-3EC32DE8B4F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{292EF832-CCD7-4B28-984A-3EC32DE8B4F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

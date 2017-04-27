@@ -17,6 +17,7 @@ namespace Zsus.Noe.Utilities
         public const int ZSUS_NOE_TRUE = 1;
         public const int ZSUS_NOE_STATUS_STARTED = 0;
         public const int ZSUS_NOE_STATUS_STOPPED = 1;
+        public const int ZSUS_SAGA_MARKED_COMPLETE = 99;
         #endregion
 
         #region Common Namespaces
@@ -37,6 +38,8 @@ namespace Zsus.Noe.Utilities
         public const string ZSUS_NOE_OFFER_WCF_ENDPOINT = "Zsus.Noe.Offer";
         public const string ZSUS_NOE_OFFER_REQUEST_ENDPOINT = "Zsus.Noe.Offer.Request";
         public const string ZSUS_NOE_OFFER_RESPONSE_ENDPOINT = "Zsus.Noe.Offer.Response";
+        public const string ZSUS_NOE_RESPONSE_ENDPOINT = "Zsus.Noe.Response";
+        
         #endregion
 
         #region DB Connection String

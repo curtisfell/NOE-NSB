@@ -40,7 +40,8 @@ namespace Zsus.Noe.Saga
         IHandleMessages<NoeOfferRequestComplete>,
         IHandleMessages<NoeOfferResponse>,
         IHandleMessages<NoeNegotiationRequestComplete>,
-        IHandleMessages<NoeNegotiationResponse>
+        IHandleMessages<NoeNegotiationResponse>,
+        IHandleMessages<NoeResponseComplete>
     {
         private static readonly ILog log = LogManager.GetLogger(typeof(Handler));
 
@@ -55,6 +56,7 @@ namespace Zsus.Noe.Saga
             mapper.ConfigureMapping<NoeApproveRequestComplete>(m => m.SagaId).ToSaga(s => s.SagaId);
             mapper.ConfigureMapping<NoeOfferRequestComplete>(m => m.SagaId).ToSaga(s => s.SagaId);
             mapper.ConfigureMapping<NoeNegotiationRequestComplete>(m => m.SagaId).ToSaga(s => s.SagaId);
+            mapper.ConfigureMapping<NoeResponseComplete>(m => m.SagaId).ToSaga(s => s.SagaId);
             mapper.ConfigureMapping<NoeApproveResponse>(m => m.SagaId).ToSaga(s => s.SagaId);
             mapper.ConfigureMapping<NoeOfferResponse>(m => m.SagaId).ToSaga(s => s.SagaId);
             mapper.ConfigureMapping<NoeNegotiationResponse>(m => m.SagaId).ToSaga(s => s.SagaId);
@@ -88,7 +90,6 @@ namespace Zsus.Noe.Saga
             var options = new SendOptions();
             options.SetDestination(Constants.ZSUS_NOE_APPROVE_REQUEST_ENDPOINT);
             await context.Send(request, options).ConfigureAwait(false);
-
         }
 
         public Task Handle(NoeApproveRequestComplete message, IMessageHandlerContext context)
@@ -112,9 +113,14 @@ namespace Zsus.Noe.Saga
             }
             else
             {
-                log.InfoFormat("Recieved NoeApproveResponse, NoeApproved flag FALSE for {0} ({1}), marking saga complete",
+                log.InfoFormat("Recieved NoeApproveResponse, NoeApproved flag FALSE for {0} ({1}), sending NoeResponse",
                 message.NoeId, message.SagaId);
-                MarkAsComplete();
+                Data.NoeApproved = message.NoeApproved;
+                var request = new NoeResponse(message);
+                request.Status = Constants.ZSUS_SAGA_MARKED_COMPLETE;
+                var options = new SendOptions();
+                options.SetDestination(Constants.ZSUS_NOE_RESPONSE_ENDPOINT);
+                await context.Send(request, options).ConfigureAwait(false);
             }
         }
 
@@ -139,9 +145,14 @@ namespace Zsus.Noe.Saga
             }
             else
             {
-                log.InfoFormat("Recieved NoeNegotiationResponse, NoeNegotiated flag FALSE for {0} ({1}), marking saga complete",
+                log.InfoFormat("Recieved NoeNegotiationResponse, NoeNegotiated flag FALSE for {0} ({1}), sending NoeResponse",
                 message.NoeId, message.SagaId);
-                MarkAsComplete();
+                Data.NoeNegotiated = message.NoeNegotiated;
+                var request = new NoeResponse(message);
+                request.Status = Constants.ZSUS_SAGA_MARKED_COMPLETE;
+                var options = new SendOptions();
+                options.SetDestination(Constants.ZSUS_NOE_RESPONSE_ENDPOINT);
+                await context.Send(request, options).ConfigureAwait(false);
             }
         }
 
@@ -154,19 +165,35 @@ namespace Zsus.Noe.Saga
         }
         
 
-        public Task Handle(NoeOfferResponse message, IMessageHandlerContext context)
+        public async Task Handle(NoeOfferResponse message, IMessageHandlerContext context)
         {
             if (message.NoeOfferAccepted)
             {
-                log.InfoFormat("Recieved NoeOfferResponse, NoeOfferAccepted flag TRUE, marking saga complete for {0} ({1})",
+                log.InfoFormat("Recieved NoeOfferResponse, NoeOfferAccepted flag TRUE for {0} ({1}), sending NoeResponse",
                 message.NoeId, message.SagaId);
                 Data.NoeOfferAccepted = message.NoeOfferAccepted;
             }
             else
             {
-                log.InfoFormat("Recieved NoeOfferResponse, NoeOfferAccepted flag FALSE for {0} ({1}), marking saga complete",
+                log.InfoFormat("Recieved NoeOfferResponse, NoeOfferAccepted flag FALSE for {0} ({1}), sending NoeResponse",
                 message.NoeId, message.SagaId);
+                Data.NoeOfferAccepted = message.NoeOfferAccepted;
             }
+            //
+            // No matter what this workflow is ending
+            //
+            var request = new NoeResponse(message);
+            request.Status = Constants.ZSUS_SAGA_MARKED_COMPLETE;
+            var options = new SendOptions();
+            options.SetDestination(Constants.ZSUS_NOE_RESPONSE_ENDPOINT);
+            await context.Send(request, options).ConfigureAwait(false);
+        }
+
+
+        public Task Handle(NoeResponseComplete message, IMessageHandlerContext context)
+        {
+            log.InfoFormat("Workflow complete for {0} ({1}), marking saga complete",
+                message.NoeId, message.SagaId);
             MarkAsComplete();
             return Task.CompletedTask;
         }

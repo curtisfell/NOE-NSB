@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AB537247-C25F-44EC-B3FA-48D9811AF935}</ProjectGuid>
+    <ProjectGuid>{292EF832-CCD7-4B28-984A-3EC32DE8B4F1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Zsus.Noe.Offer.Response</RootNamespace>
-    <AssemblyName>Zsus.Noe.Offer.Response</AssemblyName>
+    <RootNamespace>Zsus.Noe.Response</RootNamespace>
+    <AssemblyName>Zsus.Noe.Response</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,10 +46,10 @@
       <HintPath>..\packages\MongoDB.Driver.GridFS.2.3.0\lib\net45\MongoDB.Driver.GridFS.dll</HintPath>
     </Reference>
     <Reference Include="NServiceBus.Core, Version=6.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NServiceBus.6.1.3\lib\net452\NServiceBus.Core.dll</HintPath>
+      <HintPath>..\packages\NServiceBus.6.2.1\lib\net452\NServiceBus.Core.dll</HintPath>
     </Reference>
     <Reference Include="NServiceBus.Host, Version=7.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NServiceBus.Host.7.0.0\lib\net452\NServiceBus.Host.exe</HintPath>
+      <HintPath>..\packages\NServiceBus.Host.7.0.1\lib\net452\NServiceBus.Host.exe</HintPath>
     </Reference>
     <Reference Include="NServiceBus.Log4Net, Version=2.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
       <HintPath>..\packages\NServiceBus.Log4Net.2.0.0\lib\net452\NServiceBus.Log4Net.dll</HintPath>
@@ -76,6 +75,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Zsus.Noe.Commands\Zsus.Noe.Commands.csproj">
+      <Project>{05c19c74-7e78-4c59-840f-6820b0733b53}</Project>
+      <Name>Zsus.Noe.Commands</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Zsus.Noe.Messages\Zsus.Noe.Messages.csproj">
       <Project>{85c85dd6-b0ad-409e-b442-341258d837ff}</Project>
       <Name>Zsus.Noe.Messages</Name>

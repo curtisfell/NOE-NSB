@@ -55,6 +55,15 @@ namespace Zsus.Noe.Utilities
             Send(to, from, subject, body);
         }
 
+        public void SendSagaStatusChange(EmailParameters parameters)
+        {
+            string to = @"curtis.fell@workflowstudios.com";
+            string from = @"curtis.fell@gmail.com";
+            string subject = @"Workflow Status Update";
+            string body = @"<p>NOE workflow status changed: " + parameters.Status + "</p>";
+            Send(to, from, subject, body);
+        }
+
         private void Send(string to, string from, string subject, string body)
         {
             MailMessage mail = new MailMessage();
@@ -68,12 +77,7 @@ namespace Zsus.Noe.Utilities
             SmtpServer.Port = 587;
             SmtpServer.Credentials = new System.Net.NetworkCredential(@"", @"");
             SmtpServer.EnableSsl = true;
-            try { SmtpServer.Send(mail); }
-            catch(Exception e)
-            {
-                int i = 0;
-            }
-
+            SmtpServer.Send(mail);
         }
     }
 }

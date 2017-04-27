@@ -52,8 +52,10 @@
     <Compile Include="NoeNegotiationRequestComplete.cs" />
     <Compile Include="NoeNegotiationResponse.cs" />
     <Compile Include="NoeOfferRequest.cs" />
-    <Compile Include="NoeOfferRequestComplete.cs" />
     <Compile Include="NoeOfferResponse.cs" />
+    <Compile Include="NoeResponseComplete.cs" />
+    <Compile Include="NoeOfferRequestComplete.cs" />
+    <Compile Include="NoeResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
