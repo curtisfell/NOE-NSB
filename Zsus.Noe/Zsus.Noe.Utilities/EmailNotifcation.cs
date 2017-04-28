@@ -59,8 +59,8 @@ namespace Zsus.Noe.Utilities
         {
             string to = @"curtis.fell@workflowstudios.com";
             string from = @"curtis.fell@gmail.com";
-            string subject = @"Workflow Status Update";
-            string body = @"<p>NOE workflow status changed: " + parameters.Status + "</p>";
+            string subject = @"NOE Workflow Status Update";
+            string body = @"<p>NOE workflow status update: " + parameters.Status + "</p>";
             Send(to, from, subject, body);
         }
 
